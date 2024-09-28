@@ -2,24 +2,11 @@ import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa"; // For hamburger icon
 import axios from "axios";
 
-const Navbar = () => {
+const Navbar = ({ onCategoryClick }) => {
   const [isOpen, setIsOpen] = useState(false); // State for menu toggle
-  const [foodData, setFoodData] = useState([]); // State to store food data
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
-
-  // Function to fetch food data from TheMealDB API
-  const fetchFoodData = async (category) => {
-    try {
-      const response = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${category}`
-      );
-      setFoodData(response.data.meals); // Store API data in state
-    } catch (err) {
-      console.log("Error fetching data:", err);
-    }
   };
 
   return (
@@ -39,25 +26,25 @@ const Navbar = () => {
           {/* Food Category Buttons (for desktop) */}
           <div className="hidden md:flex space-x-4">
             <button
-              onClick={() => fetchFoodData("Potato")}
+              onClick={() => onCategoryClick("Potato")}
               className="btn btn-outline"
             >
               Potato
             </button>
             <button
-              onClick={() => fetchFoodData("Soup")}
+              onClick={() => onCategoryClick("Soup")}
               className="btn btn-outline"
             >
               Soup
             </button>
             <button
-              onClick={() => fetchFoodData("Chicken")}
+                onClick={() => onCategoryClick("Chicken")}
               className="btn btn-outline"
             >
               Chicken
             </button>
             <button
-              onClick={() => fetchFoodData("Beef")}
+                onClick={() => onCategoryClick("Beef")}
               className="btn btn-outline"
             >
               Beef
@@ -81,25 +68,25 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2">
           <button
-            onClick={() => fetchFoodData("Potato")}
+            onClick={() => onCategoryClick("Potato")}
             className="btn btn-outline block w-full"
           >
             Potato
           </button>
           <button
-            onClick={() => fetchFoodData("Soup")}
+            onClick={() => onCategoryClick("Soup")}
             className="btn btn-outline block w-full"
           >
             Soup
           </button>
           <button
-            onClick={() => fetchFoodData("Chicken")}
+            onClick={() => onCategoryClick("Chicken")}
             className="btn btn-outline block w-full"
           >
             Chicken
           </button>
           <button
-            onClick={() => fetchFoodData("Beef")}
+            onClick={() => onCategoryClick("Beef")}
             className="btn btn-outline block w-full"
           >
             Beef
@@ -108,7 +95,7 @@ const Navbar = () => {
       )}
 
       {/* Displaying the Food Data */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-64">
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-64">
         {foodData && foodData.length > 0 ? (
           foodData.map((meal) => (
             <div
@@ -130,7 +117,7 @@ const Navbar = () => {
             No meals to display. Select a category above.
           </p>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

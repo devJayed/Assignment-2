@@ -40,7 +40,7 @@ const FAQ = () => {
       <h2 className="text-3xl font-bold text-center mb-8">
         Frequently Asked Questions
       </h2>
-      <div className="space-y-4">
+      <div className="space-y-4 ml-16 mr-8">
         {faqs.map((faq, index) => (
           <div
             key={index}
