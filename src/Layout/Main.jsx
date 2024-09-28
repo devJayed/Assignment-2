@@ -6,7 +6,7 @@ const Main = () => {
     <div>
       {/* Navbar section   */}
       <Navbar></Navbar>
-      {/* <Banner></Banner> */}
+      <Banner></Banner>
     </div>
   );
 };
