@@ -4,9 +4,9 @@ import Navbar from "../Components/Navbar";
 const Main = () => {
   return (
     <div>
-      {/* Navbar section  */}
-      {/* <Navbar></Navbar>
-      <Banner></Banner> */}
+      {/* Navbar section   */}
+      <Navbar></Navbar>
+      {/* <Banner></Banner> */}
     </div>
   );
 };
